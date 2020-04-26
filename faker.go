@@ -1,7 +1,20 @@
 package faker
 
-import "fmt"
 
-func Println(args ...interface{}) {
-	fmt.Println(args...)
+import (
+    "fmt"
+	"goFaker/pkg/data/names"
+	"time"
+)
+
+
+
+func AllUsers(...interface{}) {
+
+	seed := time.Now().UnixNano()
+	
+	name := names.Names(seed);
+	fmt.Println(name);
+	fmt.Println("Hello!");
+
 }
