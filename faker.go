@@ -2,6 +2,6 @@ package faker
 
 import "fmt"
 
-func faker() {
-    fmt.Println("hello world")
+func Println(args ...interface{}) {
+	fmt.Println(args...)
 }
