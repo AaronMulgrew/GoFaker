@@ -1,6 +1,7 @@
 package faker
 
 import (
+	"goFaker/pkg/data/en_GB/automotive"
 	"goFaker/pkg/data/en_GB/bank"
 	"goFaker/pkg/data/en_GB/firstnames"
 	"goFaker/pkg/data/en_GB/surnames"
@@ -18,9 +19,14 @@ type Names struct {
 	Surname   string
 }
 
+type Car struct {
+	NumberPlate string
+}
+
 type Person struct {
 	Names Names
 	Bank  Bank
+	Car   Car
 }
 
 func GeneratePerson(...interface{}) Person {
@@ -30,9 +36,11 @@ func GeneratePerson(...interface{}) Person {
 	firstname := firstnames.GenerateFirstname(seed)
 	surname := surnames.GenerateSurname(seed)
 	IBAN, AccountNumber, BankCode := bank.GenerateIBAN(seed)
+	numberPlate := automotive.GenerateLicensePlate(seed)
 	bankingCredentials := Bank{IBAN, AccountNumber, BankCode}
 	names := Names{firstname, surname}
-	person := Person{names, bankingCredentials}
+	car := Car{numberPlate}
+	person := Person{names, bankingCredentials, car}
 
 	return person
 
