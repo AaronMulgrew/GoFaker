@@ -9,9 +9,9 @@ import (
 )
 
 func calculateCheckDigit(BankCode []byte, AccountNumber []byte) int64 {
-	fmt.Println(string(BankCode))
-	var t2 = []int{}
 
+	// convert the byte array to string
+	var t2 = []int{}
 	for _, i := range BankCode {
 		j, err := strconv.Atoi(string(i))
 		if err != nil {
@@ -29,11 +29,10 @@ func calculateCheckDigit(BankCode []byte, AccountNumber []byte) int64 {
 	}
 
 	// make sure we add the letters GB converted to IBAN numbers
-	t2 = append(t2, 15)
+	t2 = append(t2, 16)
 	t2 = append(t2, 11)
 	t2 = append(t2, 0)
 	t2 = append(t2, 0)
-	fmt.Println(t2)
 
 	var buf bytes.Buffer
 	for i := range t2 {
@@ -42,17 +41,7 @@ func calculateCheckDigit(BankCode []byte, AccountNumber []byte) int64 {
 
 	n := new(big.Int)
 	allNums, _ := n.SetString(buf.String(), 10)
-	//allNums, _ := n.SetString("100100100987654321131400", 10)
-
-	fmt.Println(allNums)
-
-	sumAllNumbers := 0
-	for _, i := range t2 {
-		sumAllNumbers = sumAllNumbers + i
-	}
-	//strSumAllNumbers := strconv.Itoa(sumAllNumbers)
-
-	fmt.Println(allNums.Mod(allNums, big.NewInt(97)))
+	// MOD by 97 and do 98 - result... in line with IBAN standards
 	checkdigit := 98 - (allNums.Mod(allNums, big.NewInt(97)).Int64())
 	return checkdigit
 }
@@ -72,18 +61,14 @@ func RandomDigits(length int) []byte {
 	return buf
 }
 
-func GenerateIBAN(seed int64) string {
+func GenerateIBAN(seed int64) (string, string, string) {
 	rand.Seed(seed)
 	bankCode := RandomDigits(8)
 	accountNumber := RandomDigits(10)
 
-	fmt.Println(bankCode)
 	checkdigits := calculateCheckDigit(bankCode, accountNumber)
 
-	fmt.Println(checkdigits)
+	IBAN := "GB" + strconv.FormatInt(checkdigits, 10) + string(bankCode) + string(accountNumber)
 
-	str := "GB" + strconv.FormatInt(checkdigits, 10) + string(bankCode) + string(accountNumber)
-
-	fmt.Println(str)
-	return str
+	return IBAN, string(bankCode), string(accountNumber)
 }

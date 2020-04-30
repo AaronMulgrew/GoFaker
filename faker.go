@@ -7,10 +7,20 @@ import (
 	"time"
 )
 
-type Person struct {
+type Bank struct {
+	IBAN          string
+	AccountNumber string
+	BankCode      string
+}
+
+type Names struct {
 	Firstname string
 	Surname   string
-	IBAN      string
+}
+
+type Person struct {
+	Names Names
+	Bank  Bank
 }
 
 func GeneratePerson(...interface{}) Person {
@@ -19,8 +29,10 @@ func GeneratePerson(...interface{}) Person {
 
 	firstname := firstnames.GenerateFirstname(seed)
 	surname := surnames.GenerateSurname(seed)
-	IBAN := bank.GenerateIBAN(seed)
-	person := Person{firstname, surname, IBAN}
+	IBAN, AccountNumber, BankCode := bank.GenerateIBAN(seed)
+	bankingCredentials := Bank{IBAN, AccountNumber, BankCode}
+	names := Names{firstname, surname}
+	person := Person{names, bankingCredentials}
 
 	return person
 
