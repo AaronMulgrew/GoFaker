@@ -8,7 +8,8 @@ import (
 func RandomDigits(length int, digits bool) string {
 	partial := ""
 	if digits {
-		var registrationYears [6]int
+                // these are the only years in which cars can have valid registration plates.
+	 	var registrationYears [6]int
 		registrationYears[0] = 0
 		registrationYears[1] = 1
 		registrationYears[2] = 2
@@ -25,8 +26,6 @@ func RandomDigits(length int, digits bool) string {
 		base := "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 		buf := make([]byte, length)
 		buf[0] = base[rand.Intn(len(base))]
-		//buf[1] = characters[rand.Intn(len(characters))]
-
 		for i := 0; i < length; i++ {
 			buf[i] = base[rand.Intn(len(base))]
 		}
@@ -40,6 +39,8 @@ func RandomDigits(length int, digits bool) string {
 }
 
 func GenerateLicensePlate(seed int64) string {
+        // License Plates come in 3 parts
+        // 2 letters, 2 digits (year), 3 letters
 	part1 := RandomDigits(2, false)
 	part2 := RandomDigits(2, true)
 	part3 := RandomDigits(3, false)
