@@ -5,3 +5,6 @@ go:
 script:
   - cd pkg
   - go test ./...
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
