@@ -36,3 +36,9 @@ func TestGenerateLicensePlate(t *testing.T) {
 		t.Error("Expected license plate to be alphanumeric.")
 	}
 }
+
+func TestGenerateRandomSpeed(t *testing.T) {
+	if len(GenerateRandomSpeed(230948320948)) != 6 {
+		t.Error("Expected speed to be six characters, current speed (2 digits) followed by a space and miles per hour.")
+	}
+}

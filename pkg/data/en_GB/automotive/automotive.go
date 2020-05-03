@@ -51,3 +51,22 @@ func GenerateLicensePlate(seed int64) string {
 	part3 := RandomDigits(3, false)
 	return part1 + part2 + part3
 }
+
+func randomSpeed(seed int64) string {
+	base := "012345678"
+	length := 2
+	buf := make([]byte, length)
+	buf[0] = base[rand.Intn(len(base))]
+	for i := 0; i < length; i++ {
+		buf[i] = base[rand.Intn(len(base))]
+	}
+	mph := string(buf) + " mph"
+
+	return mph
+}
+
+// GenerateRandomSpeed returns a random miles per hour speed
+func GenerateRandomSpeed(seed int64) string {
+	speed := randomSpeed(seed)
+	return speed
+}
