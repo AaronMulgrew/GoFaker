@@ -4,8 +4,24 @@
 Faker is a Go package to generate fake data. It can be used for realistic test data. Inspired by [Python Faker](https://github.com/joke2k/faker)
 
 # Usage
+Simply import the library and generate a Person struct to accessible available data.
+```Golang
+package main
 
-It is best to use the [Faker Client](https://github.com/AaronMulgrew/FakerClient) to learn how to best use the fake data which is available.
+import (
+  "fmt"
+  "github.com/AaronMulgrew/GoFaker"
+)
+
+func main() {
+  person := faker.GeneratePerson()
+  fmt.Println(person.Names.Firstname)
+  fmt.Println(person)
+}
+```
+
+
+You can also view the [Faker Client](https://github.com/AaronMulgrew/FakerClient) for a full list of available structs and other examples.
 
 # Currently Supported Data
 - Banking
