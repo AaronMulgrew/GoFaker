@@ -46,7 +46,7 @@ func calculateCheckDigit(BankCode []byte, AccountNumber []byte) int64 {
 	return checkdigit
 }
 
-func RandomDigits(length int) []byte {
+func randomDigits(length int) []byte {
 	digits := "0123456789"
 	//characters := "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 	//allCharactersAndDigits := digits + characters
@@ -61,10 +61,12 @@ func RandomDigits(length int) []byte {
 	return buf
 }
 
+// GenerateIBAN is the main entry point for the banking generation
+// and returns the IBAN, Bank code and account number.
 func GenerateIBAN(seed int64) (string, string, string) {
 	rand.Seed(seed)
-	bankCode := RandomDigits(8)
-	accountNumber := RandomDigits(10)
+	bankCode := randomDigits(8)
+	accountNumber := randomDigits(10)
 
 	checkdigits := calculateCheckDigit(bankCode, accountNumber)
 

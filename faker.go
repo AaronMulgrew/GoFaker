@@ -34,6 +34,8 @@ type Person struct {
 	Car   Car
 }
 
+// GeneratePerson is the main entry point and populates a
+// person object for use globally
 func GeneratePerson(...interface{}) Person {
 
 	seed := time.Now().UnixNano()

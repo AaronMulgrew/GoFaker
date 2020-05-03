@@ -4,6 +4,8 @@ import (
 	"math/rand"
 )
 
+// GenerateFirstname simply generates first Names
+// and picks the name from a large string array.
 func GenerateFirstname(seed int64) string {
 	var allNames [282]string
 	allNames[0] = "Susan"
