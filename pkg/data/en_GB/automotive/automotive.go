@@ -5,6 +5,9 @@ import (
 	"math/rand"
 )
 
+// RandomDigits is a function to generate the
+// semi-random character string for a valid registration
+// numberplate
 func RandomDigits(length int, digits bool) string {
 	partial := ""
 	if digits {
@@ -38,6 +41,8 @@ func RandomDigits(length int, digits bool) string {
 	return partial
 }
 
+// GenerateLicensePlate puts the three components together -
+// two letters, two year digits and three letters
 func GenerateLicensePlate(seed int64) string {
 	// License Plates come in 3 parts
 	// 2 letters, 2 digits (year), 3 letters
