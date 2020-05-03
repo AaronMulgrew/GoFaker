@@ -502,13 +502,11 @@ func GenerateSurname(seed int64) string {
 	allNames[498] = "Turner"
 	allNames[499] = "Watkins"
 
+	rand.Seed(seed)
 
-
-    rand.Seed(seed);
-
-    min := 0
-    max := 500
-    randIndex := rand.Intn(max - min) + min;
+	min := 0
+	max := 500
+	randIndex := rand.Intn(max-min) + min
 	name := allNames[randIndex]
 	return name
 }

@@ -289,12 +289,11 @@ func GenerateFirstname(seed int64) string {
 	allNames[280] = "Christopher"
 	allNames[281] = "Richard"
 
+	rand.Seed(seed)
 
-    rand.Seed(seed);
-
-    min := 0
-    max := 282
-    randIndex := rand.Intn(max - min) + min;
+	min := 0
+	max := 282
+	randIndex := rand.Intn(max-min) + min
 	name := allNames[randIndex]
 	return name
 }
