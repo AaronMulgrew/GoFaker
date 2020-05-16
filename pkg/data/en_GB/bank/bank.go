@@ -13,18 +13,12 @@ func calculateCheckDigit(BankCode []byte, AccountNumber []byte) int64 {
 	// convert the byte array to string
 	var t2 = []int{}
 	for _, i := range BankCode {
-		j, err := strconv.Atoi(string(i))
-		if err != nil {
-			panic(err)
-		}
+		j, _ := strconv.Atoi(string(i))
 		t2 = append(t2, j)
 	}
 
 	for _, i := range AccountNumber {
-		j, err := strconv.Atoi(string(i))
-		if err != nil {
-			panic(err)
-		}
+		j, _ := strconv.Atoi(string(i))
 		t2 = append(t2, j)
 	}
 
