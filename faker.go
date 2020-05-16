@@ -4,6 +4,7 @@ import (
 	"goFaker/pkg/data/en_GB/automotive"
 	"goFaker/pkg/data/en_GB/bank"
 	"goFaker/pkg/data/en_GB/firstnames"
+	"goFaker/pkg/data/en_GB/server"
 	"goFaker/pkg/data/en_GB/surnames"
 	"time"
 )
@@ -52,4 +53,21 @@ func GeneratePerson(...interface{}) Person {
 
 	return person
 
+}
+
+// Server struct houses the other structs in the base struct "Server"
+type Server struct {
+	File server.File
+}
+
+// GenerateServer is a main entry point and populates a
+// Server object for use globally
+func GenerateServer(...interface{}) Server {
+
+	seed := time.Now().UnixNano()
+
+	fileType := server.GenerateFile(seed)
+	serverInstance := Server{fileType}
+
+	return serverInstance
 }
