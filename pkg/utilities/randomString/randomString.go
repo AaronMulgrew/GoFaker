@@ -1,8 +1,8 @@
-package randomString
+package RandomString
 
 import "math/rand"
 
-// RandStringBytes generates a random string of fixed length
+// RandString generates a random string of fixed length
 func RandString(n int) string {
 	const letterBytes = "abcdefghijklmnopqrstuvwxyz"
 	b := make([]byte, n)

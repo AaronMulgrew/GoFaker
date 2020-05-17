@@ -1,7 +1,7 @@
 package server
 
 import (
-	"GoFaker/pkg/utilities/randomString"
+	"GoFaker/pkg/utilities/RandomString"
 	"math/rand"
 )
 
@@ -20,9 +20,9 @@ type File struct {
 
 // GenerateFilePath generates a random file path for return
 func GenerateFilePath(extension string) string {
-	part1 := randomString.RandString(7)
-	part2 := randomString.RandString(7)
-	part3 := randomString.RandString(7)
+	part1 := RandomString.RandString(7)
+	part2 := RandomString.RandString(7)
+	part3 := RandomString.RandString(7)
 
 	return "/bin/" + part1 + "/" + part2 + "/" + part3 + "." + extension
 }
