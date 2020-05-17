@@ -32,15 +32,21 @@ func main() {
 You can also view the [Faker Client](https://github.com/AaronMulgrew/FakerClient) for a full list of available structs and other examples.
 
 # Currently Supported Data
-- Banking
-  - IBAN (Should validate against IBAN validators)
-  - Account Number
-  - Bank Code (Does not use real bank codes)
-- Automotive
-  - Number Plates
-- Names
-  - Firstname
-  - Surname
+## Person
+ - Banking
+    - IBAN (Should validate against IBAN validators)
+    - Account Number
+    - Bank Code (Does not use real bank codes)
+ - Automotive
+    - Number Plates
+ - Names
+    - Firstname
+    - Surname
+## Server
+ - Files
+   - File Location
+   - Content Type of File (over 1000 content types supported)
+   - Extensions of Files (over 1000 extensions supported)
 
 # Currently Supported Regional Data
 - English (United Kingdom)
