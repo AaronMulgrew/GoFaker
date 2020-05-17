@@ -3,7 +3,6 @@ go:
   - 1.14.x
 
 script:
-  - cd pkg
   - go test ./... -coverprofile=coverage.txt -covermode=atomic
 
 after_success:
