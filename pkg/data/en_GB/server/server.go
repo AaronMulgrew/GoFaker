@@ -1,7 +1,7 @@
 package server
 
 import (
-	"GoFaker/pkg/utilities/RandomString"
+	"goFaker/pkg/utilities/RandomString"
 	"math/rand"
 )
 
