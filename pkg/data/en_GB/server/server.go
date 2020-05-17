@@ -1,6 +1,7 @@
 package server
 
 import (
+	"GoFaker/pkg/utilities/RandomString"
 	"math/rand"
 )
 
@@ -12,12 +13,22 @@ type ContentTypeExtension struct {
 
 // File simply holds a content type extension object
 type File struct {
-	Extension   string
-	ContentType string
+	Extension    string
+	ContentType  string
+	FileLocation string
 }
 
-// GenerateFileExtensionAndContentType picks an extension and content type
-func GenerateFileExtensionAndContentType(seed int64) ContentTypeExtension {
+// GenerateFilePath generates a random file path for return
+func GenerateFilePath(extension string) string {
+	part1 := randomString.RandString(7)
+	part2 := randomString.RandString(7)
+	part3 := randomString.RandString(7)
+
+	return "/bin/" + part1 + "/" + part2 + "/" + part3 + "." + extension
+}
+
+// generateFileExtensionAndContentType picks an extension and content type
+func generateFileExtensionAndContentType(seed int64) ContentTypeExtension {
 	var allFiles [1155]ContentTypeExtension
 	allFiles[0] = ContentTypeExtension{"123", "application/vnd.lotus-1-2-3"}
 	allFiles[1] = ContentTypeExtension{"1km", "application/vnd.1000minds.decision-model+xml"}
@@ -1186,7 +1197,8 @@ func GenerateFileExtensionAndContentType(seed int64) ContentTypeExtension {
 
 // GenerateFile simply generates content-types and extensions
 func GenerateFile(seed int64) File {
-	contentTypeExtension := GenerateFileExtensionAndContentType(seed)
-	file := File{contentTypeExtension.Extension, contentTypeExtension.ContentType}
+	contentTypeExtension := generateFileExtensionAndContentType(seed)
+	fileLocation := GenerateFilePath(contentTypeExtension.Extension)
+	file := File{contentTypeExtension.Extension, contentTypeExtension.ContentType, fileLocation}
 	return file
 }
