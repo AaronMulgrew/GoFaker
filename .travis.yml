@@ -12,6 +12,7 @@ install: true
 
 
 script:
+  - go build -o out.exe main.go
   - go test ./... -coverprofile=coverage.txt -covermode=atomic
 
 after_success:
