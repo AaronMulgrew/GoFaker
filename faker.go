@@ -1,11 +1,11 @@
 package faker
 
 import (
-	"GoFaker/pkg/data/en_GB/automotive"
-	"GoFaker/pkg/data/en_GB/bank"
-	"GoFaker/pkg/data/en_GB/firstnames"
-	"GoFaker/pkg/data/en_GB/server"
-	"GoFaker/pkg/data/en_GB/surnames"
+	"pkg/data/en_GB/automotive"
+	"pkg/data/en_GB/bank"
+	"pkg/data/en_GB/firstnames"
+	"pkg/data/en_GB/server"
+	"pkg/data/en_GB/surnames"
 	"time"
 )
 
